@@ -37,8 +37,11 @@ app.use('/tour', tourRouter);
 app.use('/comment', commentRouter);
 
 mongoose.set('strictQuery', false);
-mongoose.connect(process.env.MONGODB_LOCAL)
+
+const MONGODB = process.env.NODE_ENV === 'production' ? process.env.MONGODB_LIVE : process.env.MONGODB_LOCAL;
+mongoose.connect(MONGODB)
     .then(() => {
-        const server = app.listen(process.env.PORT, connect => console.log("Server line"));
+        console.log (process.env.NODE_ENV);
+        const server = app.listen(process.env.PORT, connect => console.log("Server live"));
         socketServer (server);
     });
