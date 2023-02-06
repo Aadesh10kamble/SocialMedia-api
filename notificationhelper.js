@@ -5,7 +5,6 @@ export const createNotification = (type, receiver, regarding, contentData = {}) 
     const content = notificationContent(type, contentData);
     Notification.create({ type, receiver, regarding, content }).then(notification => {
         for (const user of getUserSocket(notification.receiver._id.toString())) {
-            console.log (user);
             global.io.to(user.socketId).emit('notification', notification);
         };
     });

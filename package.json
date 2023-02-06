@@ -1,15 +1,13 @@
 {
-  "homepage" : "http://Aadesh10kamble.github.io/SocialMedia-FrontEnd",
   "name": "server",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start:develop": "set NODE_ENV=development&&nodemon index.js",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build",
-    "start:prod": "set NODE_ENV=production&&nodemon index.js"
+    "start:dev": "set NODE_ENV=development&&nodemon index.js",
+    "start:prod" : "set NODE_ENV=production&&nodemon .js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -31,8 +29,5 @@
     "stripe": "^11.6.0",
     "underscore": "^1.13.6",
     "validator": "^13.7.0"
-  },
-  "devDependencies": {
-    "gh-pages": "^5.0.0"
   }
 }

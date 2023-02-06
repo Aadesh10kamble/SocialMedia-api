@@ -2,10 +2,12 @@ import { Server } from "socket.io";
 export let users = [];
 
 export const socketServer = (server) => {
+    const origin  = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_LIVE :process.env.REACT_APP_LOCAL;
+    console.log (origin);
     const io = new Server(server, {
         cors: {
-            origin: 'http://localhost:3000',
-            methods: ['GET', 'POST']
+            methods: ['GET', 'POST'],
+            origin : process.env.REACT_APP_LIVE,
         }
     });
     io.on('connect', socket => {
