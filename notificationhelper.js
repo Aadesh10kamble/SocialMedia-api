@@ -13,9 +13,9 @@ export const createNotification = (type, receiver, regarding, contentData = {}) 
 const notificationContent = (type, contentData = {}) => {
     switch (type) {
         case 'likedPost':
-            return `${contentData.initiator} Liked Your Post.`;
+            return `${contentData.initiator || 'User'} Liked Your Post.`;
         case 'userFollowing' :
-            return `${contentData.followerName} is following you now.`
+            return `${contentData.followerName || 'User'} is following you now.`
         default:
             return '';
     }

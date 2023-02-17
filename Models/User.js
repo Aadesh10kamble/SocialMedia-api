@@ -13,6 +13,9 @@ const userSchema = new Schema([{
     email: { type: String, required: true, unique: true, lowercase: true, validate: validator.isEmail },
     profilePic: { type: String, default: 'default.jpg' },
     password: { type: String, required: true, minlength: [8, "minimum 8 char required"] },
+    isOnline: { type: Boolean, default: false },
+    lastOnlineAt: { type: Date },
+
     passwordConfirm: { type: String, required: true, validate: customValidator },
     follower: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     following: [{ type: Schema.Types.ObjectId, ref: 'User' }],
@@ -35,7 +38,7 @@ userSchema.methods.removeFromLiked = function (index, tour) {
     tour.likes = tour.likes - 1;
 };
 
-userSchema.methods.addToLiked = function (index, tour) {
+userSchema.methods.addToLiked = function (_, tour) {
     this.likedPosts.push(tour._id.toString());
     tour.likes = tour.likes + 1;
 };

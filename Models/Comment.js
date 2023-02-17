@@ -12,5 +12,10 @@ const commentSchema = new Schema({
 
     });
 
+commentSchema.pre(/^find/, function (next) {
+    this.populate('user');
+    next(null);
+});
+
 const Comment = model('Comment', commentSchema);
 export default Comment;

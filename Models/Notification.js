@@ -5,8 +5,9 @@ const notificationSchema = new Schema({
     type: { type: String, required: true },
     regarding: { type: Schema.Types.ObjectId },// Post for now
     content: { type: String, required: true },
-    createAt : {type : Date, default : new Date ()}
+    isTouched: { type: Boolean, default: false },
+    createdAt: { type: Date, default: new Date() }
 });
 
-const Notification = model ('Notification',notificationSchema);
+const Notification = model('Notification', notificationSchema);
 export default Notification;

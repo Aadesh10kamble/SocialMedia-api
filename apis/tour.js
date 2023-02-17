@@ -10,7 +10,7 @@ export const getAllTours = async (req, res) => {
         const tours = await Tour.find(queryFields)
             .populate({
                 path: 'user',
-                select: 'profilePic firstName lastName follower'
+                select: 'profilePic firstName lastName follower isOnline'
             });
         if (!tours) throw new Error('no tours found');
         res.status(200).json({ isSuccess: true, data: tours });
