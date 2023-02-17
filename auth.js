@@ -83,7 +83,7 @@ export const updateProfile = async (req, res) => {
         console.log (req.files.profilePic);
         if (req.files?.profilePic) {
             console.log (req.files.profilePic.at (0));
-            const file = req.files.profilePic.at(0);
+            const file = req.files.profilePic[0];
             const fileName = `${user._id}-profilePic-${file.originalname}`;
             sharp(file.buffer).resize(500, 500)
                 .toFile(`${process.cwd()}/public/media/profilePic/${fileName}`);
