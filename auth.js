@@ -76,7 +76,7 @@ export const updateProfile = async (req, res) => {
     const { user } = req;
     const { firstName, lastName, email } = req.body;
     try {
-
+        console.log ("Name......");
         if (firstName) user.firstName = firstName;
         if (lastName) user.lastName = lastName;
         if (email) user.email = email;
