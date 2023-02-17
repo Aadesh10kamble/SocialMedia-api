@@ -47,4 +47,5 @@ mongoose.connect(MONGODB)
         console.log(process.env.NODE_ENV);
         const server = app.listen(process.env.PORT, () => console.log("Server live"));
         socketServer(server);
+        console.log ("Runs");
     });
