@@ -40,6 +40,7 @@ export const login = async (req, res) => {
 export const verifyToken = async (req, res, next) => {
     const token = req.headers['x-access-token'] || req.cookie.jwt;
     try {
+        console.log (token);
         if (!token) throw new Error('token not found');
         const { userId } = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -79,8 +80,9 @@ export const updateProfile = async (req, res) => {
         if (firstName) user.firstName = firstName;
         if (lastName) user.lastName = lastName;
         if (email) user.email = email;
-
+        console.log (req.files.profilePic);
         if (req.files?.profilePic) {
+            console.log (req.files.profilePic.at (0));
             const file = req.files.profilePic.at(0);
             const fileName = `${user._id}-profilePic-${file.originalname}`;
             sharp(file.buffer).resize(500, 500)

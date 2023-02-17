@@ -8,6 +8,6 @@ export const getNotification = async (req, res) => {
             .sort({ createAt: -1 });
         res.status(200).json({ isSuccess: true, data: notifications });
     } catch (err) {
-        res.failure (err)
+        res.failure (err);
     }
 };
